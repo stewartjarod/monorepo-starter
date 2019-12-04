@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "monorepo-starter",
+  "version": "0.0.1",
+  "description": "Monorepo Starter with Serverless AWS, Lerna, TypeScript, Apollo GraphQL, etc",
+  "author": "Jarod Stewart",
+  "license": "Apache License 2.0",
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.13.2"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stewartjarod/monorepo-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stewartjarod/monorepo-starter/issues"
+  },
+  "homepage": "https://github.com/stewartjarod/monorepo-starter#readme"
+}
