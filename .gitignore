@@ -1,6 +1,10 @@
 # IntelliJ
 .idea
 
+# TypeScript
+dist
+tsconfig.tsbuildinfo
+
 # Logs
 logs
 *.log

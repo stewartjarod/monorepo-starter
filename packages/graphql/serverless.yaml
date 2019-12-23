@@ -1,0 +1,39 @@
+frameworkVersion: '>=1.60 <2.0.0'
+
+service:
+  name: graphql
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: fk
+  region: ${opt:region, env:AWS_REGION, 'us-east-1'}
+  profile: default
+  deploymentBucket:
+    serverSideEncryption: AES256
+  environment:
+    DEBUG_GRAPHQL: ${env:DEBUG_GRAPHQL}
+  logs:
+    restApi: true
+
+package:
+  excludeDevDependencies: true
+  individually: false
+  exclude:
+    - src/**
+    - __tests__/**
+    - resources/**
+    - .history/**
+    - dist/*.ts
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-pseudo-parameters
+  - serverless-prune-plugin
+
+custom:
+  prune:
+    automatic: true
+    number: 20
+
+functions: ${file(./resources/functions.yaml)}

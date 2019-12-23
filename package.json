@@ -22,6 +22,15 @@
     "lerna": "lerna"
   },
   "devDependencies": {
-    "lerna": "^3.19.0"
+    "@types/node": "12.12.14",
+    "@types/jest": "24.0.23",
+    "@types/aws-lambda": "8.10.36",
+    "@types/uuid": "3.4.6",
+    "lerna": "3.19.0",
+    "serverless": "1.60.3",
+    "serverless-pseudo-parameters": "2.5.0",
+    "serverless-prune-plugin": "1.4.1",
+    "serverless-iam-roles-per-function": "2.0.2",
+    "typescript": "3.7.4"
   }
 }
