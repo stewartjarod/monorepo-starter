@@ -1,6 +1,6 @@
 import { APIGatewayEventRequestContext, APIGatewayProxyEvent, CognitoIdentity, Context as AWSContext } from 'aws-lambda'
 
-import { Loaders } from './dataloaders'
+// import { Loaders } from './dataloaders'
 
 export interface Context {
   event: APIGatewayProxyEvent
