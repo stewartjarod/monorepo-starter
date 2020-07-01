@@ -6,11 +6,6 @@ type Query {
 }
 
 type ServiceStatus {
-  status: Status!
-}
-
-enum Status {
-  UP
-  DOWN
+  ok: Boolean!
 }
 `

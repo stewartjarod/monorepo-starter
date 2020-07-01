@@ -1,8 +1,24 @@
 {
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.0.1",
   "exact": true,
-  "npmClient": "npm"
+  "version": "1.0.0",
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "message": "chore: %s\n[ci skip]"
+    },
+    "bootstrap": {
+      "rejectCycles": true,
+      "npmClientArgs": [
+        "--save-exact",
+        "--strict-ssl"
+      ]
+    },
+    "publish": {
+      "allowBranch": "master",
+      "ignoreChanges": [
+        "**/*.md",
+        "**/*.spec.ts"
+      ]
+    }
+  }
 }

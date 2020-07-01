@@ -1,0 +1,80 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@2.0.0
+
+anchors:
+  - workspace-root: &workspace-root ~/project
+  - &feature-branch-filter
+    filters:
+      branches:
+        only: /^(?!master$).*/
+  - &master-branch-filter
+    filters:
+      branches:
+        only: /^master$/
+
+executors:
+  default-executor:
+    docker:
+      - image: circleci/node:erbium
+    working_directory: *workspace-root
+
+commands:
+  attach-to-workspace:
+    description: "Attach to the workspace"
+    steps:
+      - attach_workspace:
+          at: *workspace-root
+  git-setup:
+    description: "Git setup"
+    steps:
+      - run:
+          name: Git Setup
+          command: |
+            mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+            git config --global user.email "developer@flatironkid.com"
+            git config --global user.name "CircleCI"
+
+jobs:
+  build-test-lint:
+    executor: default-executor
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run build
+      - persist_to_workspace:
+          root: *workspace-root
+          paths:
+            - .
+      - run: npm run lint
+      - run: npm run test:ci
+
+  release:
+    executor: default-executor
+    steps:
+      - attach-to-workspace
+      - git-setup
+      - run: npm run lerna -- version --conventional-commits --yes
+
+workflows:
+  open-pull-request:
+    jobs:
+      - build-test-lint:
+          filters:
+            branches:
+              ignore: master
+
+  merged:
+    jobs:
+      - build-test-lint:
+          filters:
+            branches:
+              only: master
+            tags:
+              ignore: /.*/
+      #      - deploy dev
+      #      - e2e dev
+      - release:
+          requires:
+            - build-test-lint

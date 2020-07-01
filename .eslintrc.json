@@ -1,0 +1,32 @@
+{
+  "env": {
+    "es2020": true,
+    "node": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "ignorePatterns": [
+    "node_modules"
+  ],
+  "rules": {
+    "semi": "off",
+    "no-extra-semi": "off",
+    "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }]
+  }
+}

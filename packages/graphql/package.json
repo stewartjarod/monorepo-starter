@@ -9,12 +9,13 @@
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
-    "compile": "tsc -b tsconfig.json"
+    "compile": "tsc -b tsconfig.json",
+    "deploy": "sls deploy"
   },
   "dependencies": {
-    "apollo-server-lambda": "2.9.14"
+    "apollo-server-lambda": "2.15.1"
   },
   "devDependencies": {
-    "typescript": "3.7.4"
+    "typescript": "3.9.5"
   }
 }

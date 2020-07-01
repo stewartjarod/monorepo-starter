@@ -7,7 +7,6 @@ import { typeDefs } from './schema'
 export const server = new ApolloServer({
   typeDefs,
   resolvers,
-
   introspection: true,
   tracing: true,
   context: async ({ event, context }): Promise<Context> => {

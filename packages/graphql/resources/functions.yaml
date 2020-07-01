@@ -1,11 +1,11 @@
 GraphQL:
   name: graphql
   description: GraphQL
-  handler: dist/graphql.graphqlHandler
+  handler: dist/graphql.handler
   timeout: 30
   events:
     - http:
-        path: /
+        path: /graphql
         method: post
   iamRoleStatements:
     - Effect: Allow
