@@ -45,7 +45,7 @@
     "jest": "26.1.0",
     "lerna": "3.22.1",
     "prettier": "2.0.5",
-    "serverless": "1.74.1",
+    "serverless": "1.76.1",
     "serverless-build-client": "2.5.0",
     "serverless-iam-roles-per-function": "2.0.2",
     "serverless-plugin-aws-alerts": "1.6.0",
